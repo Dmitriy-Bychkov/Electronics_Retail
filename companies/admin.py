@@ -18,7 +18,7 @@ class CompanyAdmin(admin.ModelAdmin):
             item.save()
         self.message_user(request, 'Задолженность перед поставщиком обнулена')
 
-    nullify_debt.short_description = 'Обнулить задолженность'
+    nullify_debt.short_description = 'Обнулить долг поставщику'
 
 
 @admin.register(Product)
