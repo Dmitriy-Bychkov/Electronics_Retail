@@ -29,11 +29,12 @@ class Company(models.Model):
     """ Модель компании """
 
     class CompanyType(models.TextChoices):
-        """ Класс для создания выбора типа компании """
+        """ Класс для создания выбора типа компании в админке"""
 
-        factory = 'завод'
-        retail_network = 'розничная сеть'
-        entrepreneur = 'индивидуальный предприниматель'
+        factory = 'Завод', 'Завод'
+        retail_network = 'Розничная сеть', 'Розничная сеть'
+        entrepreneur = ('Индивидуальный предприниматель',
+                        'Индивидуальный предприниматель')
 
     name = models.CharField(max_length=150, verbose_name='название')
     email = models.EmailField(verbose_name='почта')
