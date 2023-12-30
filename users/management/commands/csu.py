@@ -9,7 +9,7 @@ load_dotenv(dotenv_path=env_path)
 
 
 class Command(BaseCommand):
-    """Класс для создания (переопределения) суперюзера"""
+    """ Класс для создания (переопределения) суперюзера """
 
     def handle(self, *args, **options):
         user = User.objects.create(
