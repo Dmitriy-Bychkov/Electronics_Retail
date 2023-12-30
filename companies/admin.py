@@ -7,7 +7,7 @@ class CompanyAdmin(admin.ModelAdmin):
     """ Представление компаний в админке """
 
     list_display = ('name', 'city', 'type', 'supplier_debt')
-    list_filter = ('city',)
+    list_filter = ('city', 'country',)
     actions = ['nullify_debt']
 
     def nullify_debt(self, request, queryset):
