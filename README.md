@@ -7,6 +7,7 @@ The network represents a hierarchical structure consisting of 3 levels:
 - Factory
 - Retail network
 - Individual entrepreneur
+
 Each level of the network is linked to only one equipment supplier d
 (not necessarily the previous level in the hierarchy).
 It is important to note that the level of hierarchy is determined by the relationship d
@@ -77,9 +78,8 @@ by running this command in the terminal:
 ## API Documentation
 The project documentation has been prepared based on drf-yasg. 
 Access the documentation on the local server at the following addresses:
-* http://127.0.0.1:8000/docs/ 
-and
-* http://127.0.0.1:8000/redoc/.
+* http://127.0.0.1:8000/docs/
+* http://127.0.0.1:8000/redoc/
 
 --------------------------------------------------------------------
 
