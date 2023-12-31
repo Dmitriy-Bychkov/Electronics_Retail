@@ -8,17 +8,17 @@ class CompanyAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'city', 'type', 'supplier_debt')
     list_filter = ('city', 'country',)
-    actions = ['nullify_debt']
+    actions = ['reset_the_debt']
 
-    def nullify_debt(self, request, queryset):
-        """ Метод для обнуления задолженности перед поставщиком """
+    def reset_the_debt(self, request, queryset):
+        """ Метод для обнуления задолженности перед поставщиком в админке """
 
         for item in queryset:
             item.supplier_debt = 0
             item.save()
-        self.message_user(request, 'Задолженность перед поставщиком обнулена')
+        self.message_user(request, 'Задолженность перед поставщиком обнулена!')
 
-    nullify_debt.short_description = 'Обнулить долг поставщику'
+    reset_the_debt.short_description = 'Обнулить долг поставщику'
 
 
 @admin.register(Product)
