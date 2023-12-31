@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from companies.models import Company
+from companies.models import Company, Product
 from companies.validators import company_create_validator
 
 
@@ -30,3 +30,11 @@ class CompanyUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         exclude = ('supplier_debt',)
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    """ Сериалайзер для модели Продукции """
+
+    class Meta:
+        model = Product
+        fields = '__all__'

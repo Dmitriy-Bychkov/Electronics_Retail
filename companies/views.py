@@ -1,9 +1,9 @@
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
-from companies.models import Company
+from companies.models import Company, Product
 from companies.serializers import CompanyCreateSerializer, CompanySerializer, \
-    CompanyUpdateSerializer
+    CompanyUpdateSerializer, ProductSerializer
 from users.permissions import IsActiveUser
 
 
@@ -57,4 +57,53 @@ class CompanyDestroyAPIView(generics.DestroyAPIView):
     """ Удаление компании """
 
     queryset = Company.objects.all()
+    permission_classes = [IsActiveUser]
+
+
+class ProductCreateAPIView(generics.CreateAPIView):
+    """ Создание нового товара """
+
+    serializer_class = ProductSerializer
+    permission_classes = [IsActiveUser]
+
+    def perform_create(self, serializer):
+        """ Переопределяем метод создания нового объекта """
+
+        new_product = serializer.save()
+        new_product.save()
+
+
+class ProductListAPIView(generics.ListAPIView):
+    """ Вывод списка всех товаров """
+
+    serializer_class = ProductSerializer
+    permission_classes = [IsActiveUser]
+
+    def get_queryset(self):
+        """ Переопределяем метод вывода объектов """
+
+        queryset = Product.objects.all()
+        return queryset
+
+
+class ProductRetrieveAPIView(generics.RetrieveAPIView):
+    """ Просмотр подробной информации о товаре """
+
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    permission_classes = [IsActiveUser]
+
+
+class ProductUpdateAPIView(generics.UpdateAPIView):
+    """ Редактирование товара """
+
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    permission_classes = [IsActiveUser]
+
+
+class ProductDestroyAPIView(generics.DestroyAPIView):
+    """ Удаление товара """
+
+    queryset = Product.objects.all()
     permission_classes = [IsActiveUser]
