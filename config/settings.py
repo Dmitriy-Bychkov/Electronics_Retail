@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_filters',
 
     'users',
+    'companies',
+    'orders',
 
 ]
 
@@ -135,6 +137,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -159,6 +164,6 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     # Время жизни токена
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=500),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
 }

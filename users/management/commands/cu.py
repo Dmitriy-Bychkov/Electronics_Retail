@@ -9,17 +9,17 @@ load_dotenv(dotenv_path=env_path)
 
 
 class Command(BaseCommand):
-    """ Класс для создания (переопределения) суперюзера """
+    """ Класс для создания обычного пользователя """
 
     def handle(self, *args, **options):
         user = User.objects.create(
-            email='admin@admin.com',
-            first_name='Admin',
-            last_name='Dmitriy',
-            is_staff=True,
-            is_superuser=True,
-            is_active=True
+            email='user@user.com',
+            first_name='User',
+            last_name='User_Userovich',
+            is_staff=False,
+            is_superuser=False,
+            is_active=False
         )
 
-        user.set_password(os.getenv('SUPERUSER_PASSWORD'))
+        user.set_password(os.getenv('USER_PASSWORD'))
         user.save()
